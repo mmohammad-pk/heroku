@@ -1,0 +1,11 @@
+<div class="breadcrumb"><pk-ecqm-breadcrumbs [currentPage]="breadCrumbTitle" [names]="breadCrumb"></pk-ecqm-breadcrumbs></div>
+<div class="ecqmgrid">
+    <pk-ecqm-grid
+        (add-measure-submit)="onCreateMeasure($event)"
+        (add-measure-close)="onCreateDialogClose($event)"
+        (add-measure-opened)="onCreateDialogOpened($event)"
+        title="My Measures"
+        [columns]="columns" 
+        [data]="data">
+    </pk-ecqm-grid>
+</div>

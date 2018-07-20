@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>React App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="container">
+    <div id="app">Loading...</div>
+  </div>
+  <script>
+    // addEventListener support for IE8
+    function bindEvent(element, eventName, eventHandler) {
+        if (element.addEventListener) {
+            element.addEventListener(eventName, eventHandler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventName, eventHandler);
+        }
+    }
+    // Send a message to the parent
+    var sendMessage = function (msg) {
+        // Make sure you are sending a string, and to stringify JSON
+        console.log("React App : Sent Message to Parent : "+msg);
+        window.parent.postMessage(msg, '*');
+    };
+    var results = document.getElementById('results'),
+        messageButton = document.getElementById('message_button');
+    // Listen to messages from parent window
+    bindEvent(window, 'message', function (e) {
+        console.log("React App : Received Message from Parent : "+e.data);
+    });
+    // Send random message data on every button click
+    // bindEvent(messageButton, 'click', function (e) {
+    //     var random = Math.random();
+    //     sendMessage('' + random);
+    // });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "author": "Scott Mebberson (http://www.scottmebberson.com/)",
+  "name": "gist-expressauthentication",
+  "description": "Simple Express authentication example",
+  "version": "0.0.0",
+  "homepage": "https://gist.github.com/1581536",
+  "repository": {
+    "type": "git",
+    "url": "git@gist.github.com:1581536.git"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "consolidate": "^0.15.1",
+    "cookie-parser": "^1.4.3",
+    "express": "4.16.3",
+    "express-session": "^1.15.6",
+    "http-proxy": "^1.17.0",
+    "jade": "0.20.x",
+    "mime": "^1.6.0"
+  },
+  "devDependencies": {}
+}

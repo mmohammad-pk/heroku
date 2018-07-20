@@ -115,10 +115,10 @@ ul.ecqm-nav li a:hover:not(.active) {
 
 </style>
 <body onload="loadIFrameOnRoute()">
-<div class="ecqm-header"><button class="ecqm-hide-large" onclick="w3_open()">&#9776;</button><img alt="logo" class="logo" src="./img/logo_dark2x.png"></div>
+<div class="ecqm-header"><button class="ecqm-hide-large" onclick="w3_open()">&#9776;</button><img alt="logo" class="logo" src="/img/logo_dark2x.png"></div>
 <div class="ecqm-bgcolor ecqm-sidebar ecqm-bar-block ecqm-collapse ecqm-card" id="mySidebar">
   <div class="ecqm-navhead">
-		<div><img alt="logo" class="logo" src="./img/logo2x.png"></div>
+		<div><img alt="logo" class="logo" src="/img/logo2x.png"></div>
 	</div>
   	<div class="ecqm-navbody">
 		<ul class="ecqm-nav">
@@ -144,17 +144,28 @@ function w3_close() {
 }
 function loadIFrame(target) {
 	if('home' === target || 'measurelibrary' === target || 'help' === target){
-		document.getElementById("myIframe").setAttribute("src", 'http://localhost:4200/');
+		document.getElementById("myIframe").setAttribute("src", 'http://localhost:8999/measure-library/');
 	}else if('testlibrary' === target){
-		document.getElementById("myIframe").setAttribute("src", 'http://localhost:3000/');
+		document.getElementById("myIframe").setAttribute("src", 'http://localhost:8999/test-library/');
 	}
 }
 function loadIFrameOnRoute() {
-	if(location.href && location.href.indexOf('#') !== -1){
-		var url = location.href.split('#')[1];
-		loadIFrame(url);
+	loadIFrame('home');
+}
+
+function bindEvent(element, eventName, eventHandler) {
+	if (element.addEventListener){
+		element.addEventListener(eventName, eventHandler, false);
+	} else if (element.attachEvent) {
+		element.attachEvent('on' + eventName, eventHandler);
 	}
 }
+
+bindEvent(window, 'message', function (e) {
+	if(e.origin === window.origin && e.data === 'login'){
+		window.location.href = window.origin+'/login';
+	}
+});
 </script>
      
 </body>

@@ -1,17 +1,18 @@
 var path = require('path');
 var httpProxy = require('http-proxy');
 var apiProxy = httpProxy.createProxyServer();
-var ngServer = 'http://localhost:4200',
-    reactServer = 'http://localhost:8888';
+var ngServer = 'https://mmohammad-pk.github.io/pk-ecqm-grid-angular/',
+    reactServer = 'https://mmohammad-pk.github.io/pk-bonnie-library-react/',
+    vueServer = 'https://mmohammad-pk.github.io/pk-ecqm-header-vue/';
 
 module.exports = function (app) {
 
 	app.get('/', function (req, res, next) {
-		res.sendFile(path.join(__dirname + '/../home.html'));
+		res.redirect('/home');
 	});
 
 	app.get('/home', function (req, res, next) {
-		res.sendFile(path.join(__dirname + '/../home.html'));
+		res.sendFile(path.join(__dirname + '/../index.html'));
 	});
 
 	app.get('/login', function (req, res, next) {
@@ -33,15 +34,19 @@ module.exports = function (app) {
 
 	});
 
-	app.all("/measure-library/*", function(req, res) {
+	app.all("/pk-ecqm-grid-angular/*", function(req, res) {
 		console.log('redirecting to ngServer : '+req.url);
-		console.log(req.session.page_views);
 		apiProxy.web(req, res, {target: ngServer});
 	});
 	
-	app.all("/test-library/*", function(req, res) {
+	app.all("/pk-bonnie-library-react/*", function(req, res) {
 		console.log('redirecting to reactServer : '+req.url);
 		apiProxy.web(req, res, {target: reactServer});
+	});
+	
+	app.all("/pk-ecqm-header-vue/*", function(req, res) {
+		console.log('redirecting to vueServer : '+req.url);
+		apiProxy.web(req, res, {target: vueServer});
 	});
 
 	app.get('/logout', function (req, res, next) {

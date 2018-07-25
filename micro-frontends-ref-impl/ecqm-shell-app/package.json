@@ -1,12 +1,14 @@
 {
-  "author": "Scott Mebberson (http://www.scottmebberson.com/)",
-  "name": "gist-expressauthentication",
-  "description": "Simple Express authentication example",
-  "version": "0.0.0",
-  "homepage": "https://gist.github.com/1581536",
+  "name": "pk-ecqm",
+  "version": "1.0.0",
+  "engines": {
+    "node": "8.11.3"
+  },
+  "main": "app.js",
+  "description": "Shell App for Micro Front End",
   "repository": {
     "type": "git",
-    "url": "git@gist.github.com:1581536.git"
+    "url": "https://git.heroku.com/pk-ecqm"
   },
   "scripts": {
     "start": "node app.js"
@@ -21,5 +23,11 @@
     "jade": "0.20.x",
     "mime": "^1.6.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
